@@ -19,7 +19,7 @@ namespace WpfApp1
         public DbSet<Lecturer> Lecturers { get; set; }
         public ApplicationContext()
         {
-            
+             
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

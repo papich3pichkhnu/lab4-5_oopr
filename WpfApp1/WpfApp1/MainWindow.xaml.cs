@@ -143,8 +143,7 @@ namespace WpfApp1
             using (ApplicationContext db = new ApplicationContext())
             {
                 db.Students.Update(student);
-                db.SaveChanges();
-                
+                db.SaveChanges();                
             }
 
             //this.students.Add(student);
