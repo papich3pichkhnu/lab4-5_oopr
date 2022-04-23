@@ -19,8 +19,7 @@ namespace WpfApp1
         public DbSet<Lecturer> Lecturers { get; set; }
         public ApplicationContext()
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
