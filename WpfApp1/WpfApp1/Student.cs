@@ -8,6 +8,7 @@ namespace WpfApp1
 {
     internal sealed class Student : Person
     {
+        public int Id { get; set; }
         public Faculty? Faculty { get; set; } = null;
         public AssociateProfessor? Mentor { get; set; } = null;
         public Student() : this("Herringhton", "Billy", "Glen")

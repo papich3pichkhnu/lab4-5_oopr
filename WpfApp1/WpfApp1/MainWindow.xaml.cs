@@ -26,7 +26,22 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            string? line;
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                // Read
+                var studentsDB = db.Students.ToList();
+
+                foreach(var student in studentsDB)
+                {
+                    this.students.Add(student);
+                }
+                ReloadList();
+                
+            }
+
+
+            /*string? line;
             StreamReader file;
             try
             {
@@ -51,17 +66,17 @@ namespace WpfApp1
             catch (Exception e)
             {
                 File.Create("students.txt");
-            }
+            }*/
         }
         private void ReloadList()
         {
-            students.Sort((x, y) => {
+            /*students.Sort((x, y) => {
                 return x.FirstName == y.FirstName ?
                 x.LastName == y.LastName ?
                 x.MiddleName.CompareTo(y.MiddleName) :
                 x.LastName.CompareTo(y.LastName) :
                 x.FirstName.CompareTo(y.FirstName);
-            });
+            });*/
 
             this.StudentsList.Items.Clear();
 
@@ -72,15 +87,21 @@ namespace WpfApp1
         }
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
+            // Create
             Student student = new Student();
             student.FirstName = this.FirstName.Text;
             student.LastName = this.LastName.Text;
             student.MiddleName = this.MiddleName.Text;            
-            student.Sex = this.Sex.Text;   
-            
+            student.Sex = this.Sex.Text;
 
-            students.Add(student);
-            this.StudentsList.Items.Add(student);
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                db.Students.Add(student);
+                db.SaveChanges();                
+            }
+
+            this.students.Add(student);
+            
             ReloadList();
         }
 
@@ -105,6 +126,45 @@ namespace WpfApp1
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             this.students.Clear();
+            ReloadList();
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.StudentsList.SelectedIndex == -1) return;
+
+
+            Student student = (Student)this.StudentsList.SelectedItem;
+            student.FirstName = this.FirstName.Text;
+            student.LastName = this.LastName.Text;
+            student.MiddleName = this.MiddleName.Text;
+            student.Sex = this.Sex.Text;
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                db.Students.Update(student);
+                db.SaveChanges();                
+            }
+
+            //this.students.Add(student);
+
+            ReloadList();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.StudentsList.SelectedIndex == -1) return;
+
+            Student student = (Student)this.StudentsList.SelectedItem;
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                db.Students.Remove(student);
+                db.SaveChanges();
+            }
+
+            this.students.Remove(student);
+
             ReloadList();
         }
     }

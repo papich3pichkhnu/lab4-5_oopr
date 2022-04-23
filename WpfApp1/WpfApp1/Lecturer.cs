@@ -8,6 +8,7 @@ namespace WpfApp1
 {
     class Lecturer : Person
     {
+        public int Id { get; set; }
         public Department? Department { get; set; } = null;
         public Lecturer() : this("Herringhton", "Billy", "Glen")
         {
