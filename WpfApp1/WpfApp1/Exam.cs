@@ -8,6 +8,7 @@ namespace WpfApp1
 {
     internal sealed class Exam
     {
+        public int Id { get; set; }
         public Student? Student { get; set; }
         public SeniorLecturer? Lecturer { get; set; }
         public Discipline? Discipline { get; set; }

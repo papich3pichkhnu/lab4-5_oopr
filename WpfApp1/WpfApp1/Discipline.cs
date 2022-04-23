@@ -8,6 +8,8 @@ namespace WpfApp1
 {
     internal sealed class Discipline
     {
+        public int Id { get; set; }
+
         private int _credits = 10;
         public int Credits
         {

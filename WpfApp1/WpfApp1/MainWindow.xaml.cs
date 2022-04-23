@@ -26,7 +26,15 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            string? line;
+
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                // создаем два объекта User
+                
+            }
+
+
+            /*string? line;
             StreamReader file;
             try
             {
@@ -51,7 +59,7 @@ namespace WpfApp1
             catch (Exception e)
             {
                 File.Create("students.txt");
-            }
+            }*/
         }
         private void ReloadList()
         {

@@ -8,6 +8,7 @@ namespace WpfApp1
 {
     internal sealed class Faculty
     {
+        public int Id { get; set; }
         private static List<Faculty> faculties = new List<Faculty>();
         public static List<Faculty> getList()
         {
@@ -50,6 +51,7 @@ namespace WpfApp1
                 findStudent.Faculty = null;
                 return true;
             }
+            
         }
         public bool addDepartment(Department department)
         {

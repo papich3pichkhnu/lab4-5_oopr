@@ -8,6 +8,7 @@ namespace WpfApp1
 {
     internal sealed class Department
     {
+        public int Id { get; set; }
         public Faculty? Faculty { get; set; }
         public string Name { get; set; } = "Department";
         public List<Lecturer> Lecturers { get; set; } = new List<Lecturer>();

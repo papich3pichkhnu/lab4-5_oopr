@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.16" />
     <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
   </ItemGroup>
 
